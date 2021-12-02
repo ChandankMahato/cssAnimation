@@ -1,0 +1,322 @@
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --body: #ff533e;
+    --mouth: #000000;
+    --feather: #939393;
+    --beak-top: #e9581a;
+    --beak-down: #aa4c21;
+    --leg: #00adef;
+    --body-color: #e3edf7;
+    --sizeA: 1;
+    --sizeB: 2;
+    --sizeC: 3
+}
+
+.bird{
+    display: flex;
+    position: absolute;
+    top:10vw;
+    left:20vw;
+}
+
+.container {
+    position: relative;
+}
+
+ .body,  .mouth,  .feather,  .tail, .beak, .mouth::before, .mouth::after, .leg1, .leg1::after, .leg1::before, .leg2, .leg2::after, .leg2::before {
+    position: absolute;
+}
+ .body,  .mouth, .feather, .beak, .mouth::before, .mouth::after  {
+    border-radius: 50%;
+}
+
+.body {
+    transform: rotate(-17deg);
+    background: linear-gradient(to bottom, transparent 0%, transparent 20%, var(--body) 20%);
+    z-index: 2;
+}
+
+.mouth {    
+    background:  var(--mouth);
+    transform: rotate(-17deg);
+    z-index: 5;
+}
+.mouth::before {
+    content: "";
+    background: white;
+    position: absolute;
+}
+.mouth::after {
+    content: "";
+    background: black;
+    position: absolute;
+    animation: animate-eye 1s infinite;
+    animation-delay: 4s;
+}
+
+@keyframes animate-eye {
+    50% {
+        height: 5px;
+    }
+}
+
+
+.feather {
+    z-index: 4;
+    background: linear-gradient(to bottom, transparent 0%, transparent 50%, var(--feather) 50%);
+    transform: rotate(-17deg);
+}
+
+.tail {
+    background-color: var(--mouth);
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%);
+    transform: rotate(-17deg);
+    z-index: 3;
+}
+
+.beak {
+    background: linear-gradient(to bottom, var(--beak-top) 0%, var(--beak-top) 15%, transparent 15% );
+    z-index: -1;
+    transform: rotate(-17deg);
+}
+
+.leg1, .leg2 {
+    background: var(--leg);
+    border-radius: 10px;
+    transform: rotate(-15deg);
+    z-index: 1;
+    animation: animate-leg 1.5s forwards;
+    animation-delay: 2s;
+}
+
+.leg1::before, .leg2::before {
+    content: "";
+    background: var(--leg);
+    border-radius: 10px;
+    transform: rotate(15deg);
+    z-index: -1;
+}
+.leg1::after, .leg2::after {
+    content: "";
+    background: var(--leg);
+    border-radius: 10px;
+    transform: rotate(-15deg);
+    z-index: -1;
+}
+
+@media (min-width: 768px){
+    .container {
+        width: calc(400px / var(--sizeA));
+        height: calc(400px / var(--sizeA));
+    }
+    .body {
+        top: calc(26px / var(--sizeA));
+        left: calc(50px / var(--sizeA));
+        height: calc(180px / var(--sizeA));
+        width: calc(200px / var(--sizeA));
+    }
+    .mouth {    
+        top: calc(20px / var(--sizeA));
+        left: calc(175px / var(--sizeA));
+        width: calc(100px / var(--sizeA));
+        height: calc(100px / var(--sizeA));
+    }
+    .mouth::before {
+        width: calc(30px / var(--sizeA));
+        height: calc(30px / var(--sizeA));
+        top: calc(20px / var(--sizeA));
+        left: calc(40px / var(--sizeA));
+    }
+    .mouth::after {
+        width: calc(10px / var(--sizeA));
+        height: calc(10px / var(--sizeA));
+        top: calc(30px / var(--sizeA));
+        left: calc(55px / var(--sizeA));
+    }
+    .feather {
+        left: calc(44px / var(--sizeA));
+        top: calc(-6px / var(--sizeA));
+        width: calc(150px / var(--sizeA));
+        height: calc(150px / var(--sizeA));
+    }
+
+    .tail {
+        width: calc(150px / var(--sizeA));
+        height: calc(60px / var(--sizeA));
+        top: calc(92px / var(--sizeA));
+        left: calc(-24px / var(--sizeA));
+    }
+
+    .beak {
+        height: calc(100px / var(--sizeA));
+        width: calc(100px / var(--sizeA));
+        left: calc(224px / var(--sizeA));
+        top: calc(40px / var(--sizeA));
+    }
+    .leg1{left: calc(125px / var(--sizeA));}
+    .leg2{left: calc(150px / var(--sizeA))}
+
+    .leg1, .leg2 {
+
+        height: calc(50px / var(--sizeA));
+        width: calc(10px / var(--sizeA));
+        top: calc(215px / var(--sizeA));
+    }
+
+    .leg1::before, .leg2::before {
+        bottom: calc(-8px / var(--sizeA));
+        width: calc(40px / var(--sizeA));
+        height: calc(9px / var(--sizeA));
+    }
+    .leg1::after, .leg2::after {
+        top: calc(-8px / var(--sizeA));
+        width: calc(30px / var(--sizeA));
+        height: calc(9px / var(--sizeA));
+    }
+}
+@media (max-width: 768px){
+    .container {
+        width: calc(400px / var(--sizeB));
+        height: calc(400px / var(--sizeB));
+    }
+    .body {
+        top: calc(26px / var(--sizeB));
+        left: calc(50px / var(--sizeB));
+        height: calc(180px / var(--sizeB));
+        width: calc(200px / var(--sizeB));
+    }
+    .mouth {    
+        top: calc(20px / var(--sizeB));
+        left: calc(175px / var(--sizeB));
+        width: calc(100px / var(--sizeB));
+        height: calc(100px / var(--sizeB));
+    }
+    .mouth::before {
+        width: calc(30px / var(--sizeB));
+        height: calc(30px / var(--sizeB));
+        top: calc(20px / var(--sizeB));
+        left: calc(40px / var(--sizeB));
+    }
+    .mouth::after {
+        width: calc(10px / var(--sizeB));
+        height: calc(10px / var(--sizeB));
+        top: calc(30px / var(--sizeB));
+        left: calc(55px / var(--sizeB));
+    }
+    .feather {
+        left: calc(44px / var(--sizeB));
+        top: calc(-6px / var(--sizeB));
+        width: calc(150px / var(--sizeB));
+        height: calc(150px / var(--sizeB));
+    }
+
+    .tail {
+        width: calc(150px / var(--sizeB));
+        height: calc(60px / var(--sizeB));
+        top: calc(92px / var(--sizeB));
+        left: calc(-24px / var(--sizeB));
+    }
+
+    .beak {
+        height: calc(100px / var(--sizeB));
+        width: calc(100px / var(--sizeB));
+        left: calc(224px / var(--sizeB));
+        top: calc(40px / var(--sizeB));
+    }
+    .leg1{left: calc(125px / var(--sizeB));}
+    .leg2{left: calc(150px / var(--sizeB))}
+
+    .leg1, .leg2 {
+
+        height: calc(50px / var(--sizeB));
+        width: calc(10px / var(--sizeB));
+        top: calc(215px / var(--sizeB));
+    }
+
+    .leg1::before, .leg2::before {
+        bottom: calc(-8px / var(--sizeB));
+        width: calc(40px / var(--sizeB));
+        height: calc(9px / var(--sizeB));
+    }
+    .leg1::after, .leg2::after {
+        top: calc(-8px / var(--sizeB));
+        width: calc(30px / var(--sizeB));
+        height: calc(9px / var(--sizeB));
+    }
+}
+
+@media (max-width: 480px){
+    .container {
+        width: calc(400px / var(--sizeC));
+        height: calc(400px / var(--sizeC));
+    }
+    .body {
+        top: calc(26px / var(--sizeC));
+        left: calc(50px / var(--sizeC));
+        height: calc(180px / var(--sizeC));
+        width: calc(200px / var(--sizeC));
+    }
+    .mouth {    
+        top: calc(20px / var(--sizeC));
+        left: calc(175px / var(--sizeC));
+        width: calc(100px / var(--sizeC));
+        height: calc(100px / var(--sizeC));
+    }
+    .mouth::before {
+        width: calc(30px / var(--sizeC));
+        height: calc(30px / var(--sizeC));
+        top: calc(20px / var(--sizeC));
+        left: calc(40px / var(--sizeC));
+    }
+    .mouth::after {
+        width: calc(10px / var(--sizeC));
+        height: calc(10px / var(--sizeC));
+        top: calc(30px / var(--sizeC));
+        left: calc(55px / var(--sizeC));
+    }
+    .feather {
+        left: calc(44px / var(--sizeC));
+        top: calc(-6px / var(--sizeC));
+        width: calc(150px / var(--sizeC));
+        height: calc(150px / var(--sizeC));
+    }
+
+    .tail {
+        width: calc(150px / var(--sizeC));
+        height: calc(60px / var(--sizeC));
+        top: calc(92px / var(--sizeC));
+        left: calc(-24px / var(--sizeC));
+    }
+
+    .beak {
+        height: calc(100px / var(--sizeC));
+        width: calc(100px / var(--sizeC));
+        left: calc(224px / var(--sizeC));
+        top: calc(40px / var(--sizeC));
+    }
+    .leg1{left: calc(125px / var(--sizeC));}
+    .leg2{left: calc(150px / var(--sizeC))}
+
+    .leg1, .leg2 {
+
+        height: calc(50px / var(--sizeC));
+        width: calc(10px / var(--sizeC));
+        top: calc(215px / var(--sizeC));
+    }
+
+    .leg1::before, .leg2::before {
+        bottom: calc(-8px / var(--sizeC));
+        width: calc(40px / var(--sizeC));
+        height: calc(9px / var(--sizeC));
+    }
+    .leg1::after, .leg2::after {
+        top: calc(-8px / var(--sizeC));
+        width: calc(30px / var(--sizeC));
+        height: calc(9px / var(--sizeC));
+    }
+}
