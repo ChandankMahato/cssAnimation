@@ -4,7 +4,7 @@
     height: 100%;
     border-radius: 50%;
     position: absolute;
-    background: radial-gradient(circle at bottom, #81e8f6, #76deef 10%, #055194 80%, #062745 100%); 
+    background: radial-gradient(circle at bottom, #81e8f6, #76deef 10%, #055194 80%, #062745 100%);
 }
 .soapBall:before {
       content: "";
